@@ -1,0 +1,215 @@
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+
+html {
+	direction: rtl;
+}
+* {
+	font-family: 'Droid Arabic Kufi', sans-serif;
+}
+
+.plain-content .login-register .logo {
+    margin-right: -98px;
+    margin-left: auto;
+}
+.plain-content .login-register .checkbox input[type=checkbox] {
+	margin-right: 50px;
+}
+.login-register .rememberMeOption {
+	text-align: right;
+    float: right;
+}
+.login-register .rememberMeOption label {
+    padding-right: 20px;
+}
+.login-register .rememberMeOption .checkbox input[type=checkbox] {
+    margin-right: -20px;
+    float: right;
+}
+.login-register .forgetPassOption {
+    text-align: left;
+    float: left;
+}
+
+#top-nav .navbar-nav li:after {
+	left: -10px;
+	right: auto;
+}
+
+#second-nav .navbar-nav > li > a {
+	color: #23aae1;
+	margin-top: 40px;
+}
+
+.intro .circle-item h2 {
+	font-size: 30px;
+}
+
+.about.home .about-qarenhom p {
+	line-height: 2em;
+}
+.howIt-works .howIt-desc {
+	line-height: 2em;
+	font-size: 17px;
+}
+
+.nav-pills>li {
+	float: none!important;
+}
+.intro.slide .arrows {
+	left: 0;
+	right: auto;
+}
+.intro.slide .slide-item .slide-caption {
+	text-align: right;
+}
+.intro.slide .slide-item .slide-caption p {
+    margin: 0 20px 15px 130px;
+}
+.owl-carousel {
+	direction: rtl;
+}
+.owl-carousel .owl-item {
+	float: right!important;
+	direction: rtl;
+}
+.filter-item {
+	text-align: right!important;
+}
+input[type='checkbox']:checked:before {
+	left: auto;
+	right: -2px;
+}
+select.form-control {
+    background: url('../img/arrow-down.png') no-repeat center left transparent;
+    background-position: left 12px center;
+}
+.calc .box i {
+	float: left;
+}
+
+.sidebar-wrapper .sidebar-content .sidebar-option p {
+	margin-right: 0;
+}
+.sidebar-wrapper .sidebar .form-control {
+	padding: 3px 12px;
+}
+.box-white .section-title {
+	text-align: right;
+}
+
+.listing-box .listing-feedback {
+	text-align: right;
+}
+.listing-box .feed {
+	margin-right: 0;
+	margin-left: 7px;
+}
+.listing-rating {
+	// float: left;
+	text-align: center;
+}
+.listing-rating.corporate {
+	float: right;
+}
+.singleListing .singleListing-rate {
+	letter-spacing: 0;
+}
+.accordion-toggle:after {
+	right: auto;
+	left: 10px;
+	float: left!important;
+}
+.accordion-toggle.collapsed:after {
+	content: "\f060";
+}
+.breadcrumb .dir {
+	float: left;
+}
+
+.news .btn-trans {
+	float: left;
+}
+
+.learn .learn-tab-nav {
+	padding-left: 0;
+}
+.learn .learn-tab-content {
+	padding-right: 0
+}
+.breadcrumb-wrap .dir {
+	float: left;
+}
+.breadcrumb-wrap .dir li {
+	margin-right: 0!important;
+}
+.breadcrumb-wrap .dir li:after {
+	margin-left: 0!important;
+	margin-right: 5px;
+}
+
+.contact .contact-info-text {
+	margin-left: auto;
+	margin-right: 20px;
+}
+
+.pagination>li>a, .pagination>li>span {
+	margin-right: 5px;
+}
+.apply .no-padding-right {
+	padding-right: 15px;
+}
+.panel-heading .accordion-toggle:after {
+	float: left;
+}
+.panel-heading .accordion-toggle.collapsed:after {
+	content: "\f060";
+}
+
+.slider-value {
+	float: left;
+}
+
+.rating-container .filled-stars {
+	left: auto!important;
+	right: 0!important;
+}
+.budget-table tr {
+	text-align: right;
+}
+
+.join .border-right {
+	border-right: none;
+	border-left: 1px solid #23aae1;
+}
+.join #login-fb i {
+	border-right: none; 
+	padding-right: 0; 
+	margin-right: 0; 
+    border-left: 1px solid #eee;
+    padding-left: 10px;
+    margin-left: 7px;
+}
+.join .btn-trans {
+	margin: 0;
+}
+
+/*big screens only*/
+@media only screen and (min-width: 992px) {
+	.intro-right {
+		right: auto;
+		left: 0;
+	}
+}
+
+/* Small Screens */
+@media (max-width: 991px) {
+	footer .footer-list.brand {
+		text-align: right!important;
+	}
+	.listing-box .feed {
+    	margin-left: 23px;
+    }
+    .apply .process .process-num {
+    	margin-right: 0;
+    }
+}

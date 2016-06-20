@@ -1,0 +1,25 @@
+{
+  "name": "quarenhom",
+  "version": "0.0.0",
+  "authors": [
+    "'Abdelrahman Awad' <'logaretm1@outlook.com'>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "AdminLTE": "adminlte#~2.3.2",
+    "bootstrap": "~3.3.6",
+    "bootstrap-star-rating": "~4.0.1",
+    "dropzone": "~4.3.0",
+    "eonasdan-bootstrap-datetimepicker": "~4.17.37",
+    "font-awesome": "fontawesome#~4.5.0",
+    "Ionicons": "ionicons#~2.0.1",
+    "tinymce": "~4.3.8"
+  }
+}

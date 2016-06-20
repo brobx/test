@@ -1,0 +1,11 @@
+.tooltip.top .tooltip-arrow {
+    top: -2px;
+}
+
+.slider .tooltip-inner {
+    position: relative; top: -30px;
+}
+
+.visually-hidden {
+    display: none;
+}
