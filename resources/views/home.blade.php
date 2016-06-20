@@ -14,21 +14,27 @@
                     <div class="col-md-4 dots">
                         <button class="circle-btn">
                             <div class="circle-item">
-                                <h2>{{trans('main.learn')}}</h2>
+                                <a href="{{ route('industries.show', 'banking') }}">
+                                    <h2>{{trans('main.learn')}}</h2>
+                                </a>
                             </div>
                         </button>
                     </div>
                     <div class="col-md-4 dots">
                         <button class="circle-btn">
                             <div class="circle-item">
+                                <a href="{{ route('industries.show', 'broadband') }}">
                                 <h2>{{trans('main.compare')}}</h2>
+                                </a>
                             </div>
                         </button>
                     </div>
                     <div class="col-md-4">
                         <button class="circle-btn">
                             <div class="circle-item">
+                                <a href="{{ route('industries.show', 'travel') }}">
                                 <h2>{{trans('main.apply')}}</h2>
+                                </a>
                             </div>
                         </button>
                     </div>

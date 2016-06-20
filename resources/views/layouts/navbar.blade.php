@@ -30,9 +30,9 @@
                 <li><a href="{{ route('news.index') }}">{{trans('main.news')}}</a></li>
                 <li><a href="{{ route('help.index') }}">{{trans('main.help')}}</a></li>
                 @if(config('app.locale') == 'ar')
-                <li><a href="{{ switchLangUrl() }}">{{trans('main.english')}}</a></li>
+                <li><a href="{{ switchLangUrl() }}" id="en" class="langChange">{{trans('main.english')}}</a></li>
                 @else
-                <li><a href="{{ switchLangUrl() }}" id="ar">{{trans('main.arabic')}}</a></li>
+                <li><a href="{{ switchLangUrl() }}" id="ar" class="langChange">{{trans('main.arabic')}}</a></li>
                 @endif
             </ul>
         </div><!-- /.navbar-collapse -->

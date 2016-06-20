@@ -25637,3 +25637,31 @@ new _vue2.default({
 },{"./components/graph.vue":72,"./components/image-upload.vue":73,"./components/inline-slider-upload.vue":74,"./components/slider-upload.vue":75,"./components/toggled-field.vue":76,"./directives":77,"_process":43,"vue":69,"vue-resource":58}]},{},[78]);
 
 //# sourceMappingURL=bundle.js.map
+
+$('.langChange').on('click',function(){
+	var langToChange = $(this).attr('id')
+	saveLanguage(langToChange);
+})
+
+function saveLanguage(currentLanguage){
+	localStorage.setItem('language', JSON.stringify(currentLanguage));
+}
+
+getLanguage();
+
+function getLanguage(){
+	var currentUrl = window.location.pathname,
+		matchesUrl = currentUrl.split('/'),
+		currentLanguage = matchesUrl[1];
+	var savedLanguage = JSON.parse(localStorage.getItem('language'));
+	if(savedLanguage)
+	{
+		if(currentLanguage != savedLanguage){
+			matchesUrl[1] = savedLanguage;
+			var routeWithLang = matchesUrl.join('/');
+			window.location.href = routeWithLang
+		}
+	} else {
+		saveLanguage(currentLanguage)
+	}
+}

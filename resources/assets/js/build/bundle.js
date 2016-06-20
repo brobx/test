@@ -25843,3 +25843,34 @@ new _vue2.default({
 },{"./components/BudgetCalculator.vue":71,"./components/ComparisonSlider.vue":72,"./components/QuickSearch.vue":74,"./components/SearchHelp.vue":75,"./directives":76,"_process":43,"vue":69,"vue-resource":58}]},{},[77]);
 
 //# sourceMappingURL=bundle.js.map
+$('.langChange').on('click',function(){
+	var langToChange = $(this).attr('id')
+	saveLanguage(langToChange);
+})
+
+function saveLanguage(currentLanguage){
+	localStorage.setItem('language', JSON.stringify(currentLanguage));
+}
+
+getLanguage();
+
+function getLanguage(){
+	var currentUrl = window.location.pathname,
+	    matchesUrl = currentUrl.split('/'),
+	    currentLanguage = matchesUrl[1];
+	var savedLanguage = JSON.parse(localStorage.getItem('language'));
+	console.log(savedLanguage);
+	if(savedLanguage)
+	{
+		if(currentLanguage != savedLanguage){
+			console.log(matchesUrl)
+			matchesUrl[1] = savedLanguage;
+			var routeWithLang = matchesUrl.join('/');
+			console.log(routeWithLang);
+			window.location.href = routeWithLang
+		}
+	} else {
+		saveLanguage(currentLanguage)
+	}
+}
+

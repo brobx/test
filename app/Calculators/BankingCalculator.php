@@ -34,7 +34,7 @@ class BankingCalculator extends Calculator
         $numerator = $amount * $interest / 12;
 
         //1 - (1+ (interest Rate/12))^(-tenure*12)
-        $denominator = 1 - (1 + ($interest / 12)) ** -($tenure * 12);
+        $denominator = pow(1 - (1 + ($interest / 12)), -($tenure * 12));
 
         return number_format(round($numerator / $denominator, 0, PHP_ROUND_HALF_UP));
     }
