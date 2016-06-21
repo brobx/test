@@ -15,7 +15,7 @@
                         <button class="circle-btn">
                             <div class="circle-item">
                                 <a href="{{ route('industries.show', 'banking') }}">
-                                    <h2>{{trans('main.learn')}}</h2>
+                                    <h2>{{trans('main.banking')}}</h2>
                                 </a>
                             </div>
                         </button>
@@ -24,7 +24,7 @@
                         <button class="circle-btn">
                             <div class="circle-item">
                                 <a href="{{ route('industries.show', 'broadband') }}">
-                                <h2>{{trans('main.compare')}}</h2>
+                                <h2>{{trans('main.mobilePhone')}}</h2>
                                 </a>
                             </div>
                         </button>
@@ -33,7 +33,7 @@
                         <button class="circle-btn">
                             <div class="circle-item">
                                 <a href="{{ route('industries.show', 'travel') }}">
-                                <h2>{{trans('main.apply')}}</h2>
+                                <h2>{{trans('main.travel')}}</h2>
                                 </a>
                             </div>
                         </button>

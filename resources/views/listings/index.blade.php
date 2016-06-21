@@ -34,7 +34,9 @@
 
 				@if($listings->count())
 					@foreach($listings as $listing)
+						@if($listing->getAttributes()['featured'] != 1)
 						@include("listings._{$service->corporateType->slug}", ['service_type' => strtolower($service->name)])
+						@endif
 					@endforeach
 				@else
 					<h3 class="text-center">{{ trans('main.noListings') }}</h3>
