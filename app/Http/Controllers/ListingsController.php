@@ -68,15 +68,14 @@ class ListingsController extends Controller
 
         event(new UserApplied($request->user(), $listing->apply($request)));
 
-        if ($type == 'branch') {
-            return redirect()->route('corporates.show', $listing->corporate_id);
+        switch ($type) {
+            case 'branch':
+                return redirect()->route('corporates.show', $listing->corporate_id);
+            case 'online':
+                return redirect($listing->url);
+            default:
+                return redirect()->route('listing.apply.completed', $listing->id);
         }
-
-        else if ($type == 'online') {
-            return redirect($listing->url);
-        }
-
-        return redirect()->route('listing.apply.completed', $listing->id);
     }
 
     /**

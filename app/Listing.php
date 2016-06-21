@@ -23,6 +23,16 @@ class Listing extends Model implements IPresentable
     protected $presenter = ListingPresenter::class;
 
     /**
+     * @var array
+     */
+    protected $callTime = [
+        1 => '9 a.m. - 12 p.m',
+        2 => '12 p.m. - 3 p.m',
+        3 => '3 a.m. - 6 p.m',
+        4 => '6 a.m. - 9 p.m',
+    ];
+
+    /**
      * @var
      */
     private $averageRating;
@@ -216,11 +226,19 @@ class Listing extends Model implements IPresentable
         if($request->has('phone')) {
             $request->user()->update(['phone' => $request->get('phone')]);
         }
+        $time = null;
+
+        if ($request->has('prefferedCallTime')) {
+            if (array_key_exists($request->get('prefferedCallTime'), $this->callTime)) {
+                $time = $this->callTime[$request->get('prefferedCallTime')];
+            }
+        }
 
         return $this->leads()->create([
             'ip_address' => $request->ip(),
             'user_id' => $request->user()->id,
             'type' => $request->get('type'),
+            'preffered_call_time' => $time,
             'language' => $request->segment(1) == 'en' ? 'English' : 'Arabic'
         ]);
     }
