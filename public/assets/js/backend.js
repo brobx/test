@@ -27298,14 +27298,11 @@ function getLanguage(){
 		matchesUrl = currentUrl.split('/'),
 		currentLanguage = matchesUrl[1];
 	var savedLanguage = JSON.parse(localStorage.getItem('language'));
-	console.log(savedLanguage);
 	if(savedLanguage)
 	{
 		if(currentLanguage != savedLanguage){
-			console.log(matchesUrl)
 			matchesUrl[1] = savedLanguage;
 			var routeWithLang = matchesUrl.join('/');
-			console.log(routeWithLang);
 			window.location.href = routeWithLang
 		}
 	} else {

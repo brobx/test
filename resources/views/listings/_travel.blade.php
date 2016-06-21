@@ -101,6 +101,7 @@
                 <a href="{{ route('listing.pay', $listing->id) }}" class="btn btn-trans">{{ trans('main.bookNow') }}</a>
             </div>
         </div>
+     <div class="clearfix"></div>
     </div>
 
 @section('scripts')

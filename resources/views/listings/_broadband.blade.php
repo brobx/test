@@ -104,6 +104,13 @@
             @for($i = 0; $i < 5 - $listing->averageRating; $i++)
                 <i class="fa fa-star-o fa-2x"></i>
             @endfor
+                <div class="blockRatingShow">
+                    <ul>
+                        <li>Application Pricing</li>
+                        <li>Application Pricing</li>
+                        <li>Application Pricing</li>
+                    </ul>
+                </div>
         </div>
         <div class="listing-actions">
             <a href="{{ route('listing.getApply', $listing->id) }}" class="btn btn-trans green">{{ trans('main.applyNow') }}</a>
@@ -113,6 +120,7 @@
             <a href="{{ route('listing.show', $listing->id) }}" class="btn btn-trans light-orange">{{ trans('main.moreDetails') }}</a>
         </div>
     </div>
+    <div class="clearfix"></div>
 </div>
 
 @section('scripts')

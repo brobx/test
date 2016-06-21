@@ -865,7 +865,7 @@ Listing
 	margin-top: 20px;
     // float: right;
     text-align: center;
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 .listing-rating.corporate {
 	float: left;
@@ -2234,7 +2234,21 @@ input[type='radio']:checked:before {
 	float: none;
 	color: #23aae1;
 }
-
+.blockRatingShow
+{
+	background: #2294c3;
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 10px;
+	display: none;
+	width: 250px;
+}
+.blockRatingShow div
+{
+	width: 50%;
+	float: left;
+}
 /*big screens only*/
 @media only screen and (min-width: 992px) {
 	.intro-left .product-slide {
