@@ -5,6 +5,7 @@ namespace App\Filters\Services\Banking;
 use App\Filters\Services\QueryFilter;
 use App\ListingField;
 use App\ListingFieldValue;
+use App\Calculators\LoanCalculator;
 
 class CarLoan extends QueryFilter
 {
@@ -115,13 +116,13 @@ class CarLoan extends QueryFilter
         $income = (int)$this->request->get('income');
         $carValue = (int)$this->request->get('car_value', 0);
 
-        if(! $income) {
+        if(!$income) {
             return;
         }
 
         $query = clone $this->query;
         $calculator = new LoanCalculator();
-        $listings = $query->get()->filter(function ($listing) use ($income, $value, $calculator) {
+        $listings = $query->get()->filter(function ($listing) use ($income, $value, $calculator, $carValue) {
             $amount = $calculator->maxLoanAmount($listing, $income);
             $maxValue = $carValue - ($carValue * $listing->getFieldValue('Max. Amount to Car Value') / 100);
 
