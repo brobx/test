@@ -25,7 +25,8 @@ class Lead extends Model implements IPresentable
         'ip_address',
         'language',
         'user_id',
-        'listing_id'
+        'listing_id',
+        'preffered_call_time'
     ];
 
     /**
