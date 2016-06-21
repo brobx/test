@@ -5,6 +5,7 @@ namespace App\Filters\Services\Banking;
 use App\Filters\Services\QueryFilter;
 use App\ListingField;
 use App\ListingFieldValue;
+use App\Calculators\LoanCalculator;
 
 class CarLoan extends QueryFilter
 {
