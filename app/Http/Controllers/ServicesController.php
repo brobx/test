@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Filters\Services\Contracts\QueryFilter;
 use App\Http\Requests;
+use App\Review;
 use App\Service;
 use App\Transformers\ListingTransformer;
 use Illuminate\Contracts\Auth\Guard;
@@ -41,8 +42,14 @@ class ServicesController extends Controller
                         ->get()
             );
         }
+        $reviews = [];
+        $reviewsObj = new Review();
+        foreach ($listings as $item) {
+            $reviews[$item->id][] = $reviewsObj->getReviewByListingId($item->id);
+        }
 
-        return view('listings.index', compact('listings', 'service', 'fields', 'highlights', 'featuredListing', 'comparisons'));
+        return view('listings.index', compact('listings', 'service', 'fields', 'highlights', 'featuredListing',
+            'comparisons', 'reviews'));
     }
 
     /**
