@@ -158,6 +158,13 @@
         // parameter when you first load the API. For example:
         // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
+        getLocationbyIp()
+        function getLocationbyIp() {
+            $.get("http://ipinfo.io", function (response) {
+                console.log(response)
+            }, "jsonp");
+        }
+
         var map;
         var infowindow;
 
