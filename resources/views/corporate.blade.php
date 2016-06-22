@@ -125,8 +125,9 @@
                 <div class="col-md-6">
                     <div class="corporate-branches box-white">
                         <h2 class="section-title">{{trans('main.branches')}}</h2>
+                        <div id="map"></div>
                         <ul>
-                            @foreach($corporate->branches as $branch)
+                            {{--@foreach($corporate->branches as $branch)
                                 <a href="#" data-remodal-target="modal">
                                     <li>
                                         <h4>{{ $branch->translate()->name }}</h4>
@@ -135,7 +136,7 @@
                                         <p>{{ $branch->working_hours }}</p>
                                     </li>
                                 </a>
-                            @endforeach
+                            @endforeach--}}
                         </ul>
                     </div>
                 </div>
@@ -151,25 +152,67 @@
 @endsection
 
 @section('scripts')
-<script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_8VPaMbNT_peOf53_W7M0BxQK1Cpjphk&callback=initMap">
-</script>
-<script>
-    function initMap() {
-        var myLatLng = {lat: -25.363, lng: 131.044};
 
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
-            center: myLatLng
-        });
+    <script>
+        // This example requires the Places library. Include the libraries=places
+        // parameter when you first load the API. For example:
+        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-        var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            title: 'Hello World!'
-        });
-    }
-</script>
+        var map;
+        var infowindow;
+
+        var userPosition = navigator.geolocation.getCurrentPosition(function(position) {
+            console.log(position)
+                var latitude = position.coords.latitude,
+                    longitude = position.coords.longitude,
+                    pyrmont = {lat: latitude, lng: longitude},
+                    objToSearch = '{{ $corporate->translate()->name }}';
+            console.log(objToSearch)
+            initMap(pyrmont, objToSearch)
+        })
+        //console.log(userPosition)
+
+
+        function initMap(pyrmont, objToSearch) {
+            //var pyrmont = {lat: 30.046111, lng: 31.223102};
+
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: pyrmont,
+                zoom: 11
+            });
+
+            infowindow = new google.maps.InfoWindow();
+            var service = new google.maps.places.PlacesService(map);
+            service.nearbySearch({
+                location: pyrmont,
+                radius: 15000,
+                type: ['bank'],
+                name: objToSearch
+            }, callback);
+        }
+
+        function callback(results, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                for (var i = 0; i < results.length; i++) {
+                    createMarker(results[i]);
+                }
+            }
+        }
+
+        function createMarker(place) {
+            var placeLoc = place.geometry.location;
+            var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location
+            });
+
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(place.name);
+                infowindow.open(map, this);
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC96hIBgmfXda-mTT8vL2KMvPBZn2WF0wc&libraries=places" async defer></script>
 <script>
     $('.collapse').collapse("hide");
 </script>

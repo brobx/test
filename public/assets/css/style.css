@@ -783,7 +783,7 @@ Listing
 	color: #23aae1;
 	margin-bottom: 15px;
 	padding: 10px;
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 .listing-box.highlighted {
 	background-color: rgba(35, 170, 225, 0.09);
@@ -2238,17 +2238,33 @@ input[type='radio']:checked:before {
 {
 	background: #2294c3;
 	position: absolute;
-	right: 0;
-	top: 0;
+	/* right: 0; */
+	top: -16px;
+	left: 85px;
 	padding: 10px;
+	z-index: 10;
 	display: none;
-	width: 250px;
+	width: 290px;
 }
 .blockRatingShow div
 {
 	width: 50%;
+	color: #fff;
 	float: left;
 }
+.carretRate
+{
+	position: absolute;
+	font-size: 33px!important;
+	left: -11px;
+	top: 38px;
+	color: #2294c3;
+}
+.prefferedCallTime
+{
+	margin-top: 20px;
+}
+
 /*big screens only*/
 @media only screen and (min-width: 992px) {
 	.intro-left .product-slide {

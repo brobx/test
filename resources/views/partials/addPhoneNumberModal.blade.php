@@ -10,8 +10,9 @@
         <div class="modal-body">
             <div class="form-group col-md-6">
                 <input name="phone" type="text" class="form-control" placeholder="{{ trans('main.mobilePhone') }}">
-                <label for="prefferedCallTime">Preferred call time</label>
-                    <select class="form-control" name="prefferedCallTime">
+                <!--<label for="prefferedCallTime">Preferred call time</label>-->
+                    <select class="form-control prefferedCallTime" name="prefferedCallTime">
+                        <option value="" disabled selected>Preferred call time</option>
                         <option value="1">9 a.m. - 12 p.m</option>
                         <option value="2">12 p.m. - 3 p.m</option>
                         <option value="3">3 a.m. - 6 p.m</option>

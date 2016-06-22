@@ -25900,5 +25900,12 @@ function getLanguage(){
 	}
 }
 
+$('.listings .listing-rating').hover(function(){
+	$(this).find('.blockRatingShow').fadeToggle();
+})
+
+/*$('.listings .listing-rating').on('mouseover', function(){
+	$(this).find('.blockRatingShow').show();
+})*/
 
 //# sourceMappingURL=frontend.js.map

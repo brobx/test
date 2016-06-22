@@ -63,11 +63,44 @@
                 <i class="fa fa-star-o fa-2x"></i>
             @endfor
             <div class="blockRatingShow">
+                <i class="fa fa-caret-left carretRate" aria-hidden="true"></i>
                 <ul>
-                    <li><div>Application Pricing</div><div><i class="fa fa-star-o fa-2x"></i></div></li>
-                    <li><div>Application Pricing</div></li>
-                    <li><div>Application Pricing</div></li>
-                    <li><div>Application Pricing</div></li>
+                    <li><div>Application Pricing</div>
+                        <div>
+                            <i class="fa fa-star-o fa-2x"></i>
+                            <i class="fa fa-star-o fa-2x"></i>
+                            <i class="fa fa-star-o fa-2x"></i>
+                            <i class="fa fa-star-o fa-2x"></i>
+                            <i class="fa fa-star-o fa-2x"></i>
+                        </div>
+                    </li>
+                    <li><div>Application Pricing</div>
+                        <div>
+                            <i class="fa fa-star-o fa-2x"></i>
+                            <i class="fa fa-star-o fa-2x"></i>
+                            <i class="fa fa-star-o fa-2x"></i>
+                            <i class="fa fa-star-o fa-2x"></i>
+                            <i class="fa fa-star-o fa-2x"></i>
+                        </div>
+                    </li>
+                    <li><div>Application Pricing</div>
+                        <div>
+                            <i class="fa fa-star-o fa-2x"></i>
+                            <i class="fa fa-star-o fa-2x"></i>
+                            <i class="fa fa-star-o fa-2x"></i>
+                            <i class="fa fa-star-o fa-2x"></i>
+                            <i class="fa fa-star-o fa-2x"></i>
+                        </div>
+                    </li>
+                    <li><div>Application Pricing</div>
+                        <div>
+                            <i class="fa fa-star-o fa-2x"></i>
+                            <i class="fa fa-star-o fa-2x"></i>
+                            <i class="fa fa-star-o fa-2x"></i>
+                            <i class="fa fa-star-o fa-2x"></i>
+                            <i class="fa fa-star-o fa-2x"></i>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
