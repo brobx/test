@@ -112,7 +112,9 @@
         if ($average) {
             $average = $average / $count;
         }
+
         ?>
+
 
         <div class="listing-rating">
             @for($i = 0; $i < $average; $i++)
@@ -121,13 +123,25 @@
             @for($i = 0; $i < 5 - $average; $i++)
                 <i class="fa fa-star-o fa-2x"></i>
             @endfor
+            @if(!empty($tempRatings))
                 <div class="blockRatingShow">
+                    <i class="fa fa-caret-left carretRate" aria-hidden="true"></i>
                     <ul>
-                        <li>Application Pricing</li>
-                        <li>Application Pricing</li>
-                        <li>Application Pricing</li>
+                        @foreach($tempRatings as $k => $v)
+                            <li><div>{{$k}}</div>
+                                <div>
+                                    @for($i = 0; $i < $v; $i++)
+                                        <i class="fa fa-star fa-2x"></i>
+                                    @endfor
+                                    @for($i = 0; $i < 5 - $v; $i++)
+                                        <i class="fa fa-star-o fa-2x"></i>
+                                    @endfor
+                                </div>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
+            @endif
         </div>
         <div class="listing-actions">
             <a href="{{ route('listing.getApply', $listing->id) }}" class="btn btn-trans green">{{ trans('main.applyNow') }}</a>

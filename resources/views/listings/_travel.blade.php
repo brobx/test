@@ -73,14 +73,36 @@
             if ($average) {
                 $average = $average / $count;
             }
+
             ?>
-            <div class="listing-rating text-center">
+
+
+            <div class="listing-rating">
                 @for($i = 0; $i < $average; $i++)
                     <i class="fa fa-star fa-2x"></i>
                 @endfor
                 @for($i = 0; $i < 5 - $average; $i++)
                     <i class="fa fa-star-o fa-2x"></i>
                 @endfor
+                @if(!empty($tempRatings))
+                    <div class="blockRatingShow">
+                        <i class="fa fa-caret-left carretRate" aria-hidden="true"></i>
+                        <ul>
+                            @foreach($tempRatings as $k => $v)
+                                <li><div>{{$k}}</div>
+                                    <div>
+                                        @for($i = 0; $i < $v; $i++)
+                                            <i class="fa fa-star fa-2x"></i>
+                                        @endfor
+                                        @for($i = 0; $i < 5 - $v; $i++)
+                                            <i class="fa fa-star-o fa-2x"></i>
+                                        @endfor
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
             <div class="singleListing-sidebar">
                 <div class="singleListing-slider">
