@@ -265,13 +265,17 @@ class Listing extends Model implements IPresentable
     public function review(Lead $lead, $ratings)
     {
         $result = [];
-        foreach ( $ratings as $rating) {
-           $result[] = $this->reviews()->create([
-               'user_id' => auth()->user()->id,
-               'lead_id' => $lead->id,
-               'rating' => $rating['value'],
-               'type' => $rating['type']
-           ]);
+
+        foreach ( $ratings as $key => $rating) {
+           if ($key !== '_token') {
+               $result[] = $this->reviews()->create([
+                   'user_id' => auth()->user()->id,
+                   'lead_id' => $lead->id,
+                   'rating' => $rating,
+                   'type' => $key
+               ]);
+           }
+
         }
 
         return $result;

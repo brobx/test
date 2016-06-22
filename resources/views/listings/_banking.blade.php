@@ -39,6 +39,7 @@
                         <img src="/uploads/{{ $listing->corporate->details->logo }}" class="img-responsive">
                     </div>
                 </a>
+
                 <div class="listing-rating corporate">
                     @for($i = 0; $i < $listing->corporate->rating; $i++)
                         <i class="fa fa-star"></i>
@@ -55,55 +56,53 @@
         </div>
     </div>
     <div class="col-md-3">
+        <?php
+            $tempRews = $reviews[$listing->id];
+            $average = 0;
+            $count = 0;
+            $tempRatings =[];
+            foreach ($tempRews as $rew) {
+                foreach ($rew as $item) {
+                    $tempRatings[str_replace('_', ' ', $item->type)] = $item->sum_rating;
+                    $average += (int)$item->sum_rating;
+                    $count++;
+                }
+            }
+            if ($average) {
+                $average = $average / $count;
+            }
+
+        ?>
+
+
         <div class="listing-rating">
-            @for($i = 0; $i < $listing->averageRating; $i++)
+            @for($i = 0; $i < $average; $i++)
                 <i class="fa fa-star fa-2x"></i>
             @endfor
-            @for($i = 0; $i < 5 - $listing->averageRating; $i++)
+            @for($i = 0; $i < 5 - $average; $i++)
                 <i class="fa fa-star-o fa-2x"></i>
             @endfor
-            <div class="blockRatingShow">
-                <i class="fa fa-caret-left carretRate" aria-hidden="true"></i>
-                <ul>
-                    <li><div>Application Pricing</div>
-                        <div>
-                            <i class="fa fa-star-o fa-2x"></i>
-                            <i class="fa fa-star-o fa-2x"></i>
-                            <i class="fa fa-star-o fa-2x"></i>
-                            <i class="fa fa-star-o fa-2x"></i>
-                            <i class="fa fa-star-o fa-2x"></i>
-                        </div>
-                    </li>
-                    <li><div>Application Pricing</div>
-                        <div>
-                            <i class="fa fa-star-o fa-2x"></i>
-                            <i class="fa fa-star-o fa-2x"></i>
-                            <i class="fa fa-star-o fa-2x"></i>
-                            <i class="fa fa-star-o fa-2x"></i>
-                            <i class="fa fa-star-o fa-2x"></i>
-                        </div>
-                    </li>
-                    <li><div>Application Pricing</div>
-                        <div>
-                            <i class="fa fa-star-o fa-2x"></i>
-                            <i class="fa fa-star-o fa-2x"></i>
-                            <i class="fa fa-star-o fa-2x"></i>
-                            <i class="fa fa-star-o fa-2x"></i>
-                            <i class="fa fa-star-o fa-2x"></i>
-                        </div>
-                    </li>
-                    <li><div>Application Pricing</div>
-                        <div>
-                            <i class="fa fa-star-o fa-2x"></i>
-                            <i class="fa fa-star-o fa-2x"></i>
-                            <i class="fa fa-star-o fa-2x"></i>
-                            <i class="fa fa-star-o fa-2x"></i>
-                            <i class="fa fa-star-o fa-2x"></i>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            @if(!empty($tempRatings))
+                <div class="blockRatingShow">
+                    <i class="fa fa-caret-left carretRate" aria-hidden="true"></i>
+                    <ul>
+                        @foreach($tempRatings as $k => $v)
+                            <li><div>{{$k}}</div>
+                                <div>
+                                    @for($i = 0; $i < $v; $i++)
+                                        <i class="fa fa-star fa-2x"></i>
+                                    @endfor
+                                    @for($i = 0; $i < 5 - $v; $i++)
+                                        <i class="fa fa-star-o fa-2x"></i>
+                                    @endfor
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
+
         <div class="listing-actions">
             <a href="{{ route('listing.getApply', $listing->id) }}"
                class="btn btn-trans green">{{ trans('main.applyNow') }}</a>

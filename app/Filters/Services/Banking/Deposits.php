@@ -38,7 +38,7 @@ class Deposits extends QueryFilter
         return $fields->add(new ListingField([
             'name' => 'amount',
             'type' => 'textbox',
-            'settings' => ['validation' => 'numeric', 'label' => trans('main.loanAmount')]
+            'settings' => ['validation' => 'numeric', 'label' => trans('main.depositAmount')]
         ]));
     }
 

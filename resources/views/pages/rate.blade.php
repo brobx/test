@@ -7,7 +7,7 @@
         @foreach($ratingParameters as $index => $parameter)
             <div class="form-group">
                 <label for="parameters-{{ $index }}">{{ $parameter }}</label>
-                <input data-size='xs' type="number" min="1" max="5" step="1" id="parameters-{{ $index }}" v-star name="parameters[]" required>
+                <input data-size='xs' type="number" min="1" max="5" step="1" id="parameters-{{ $index }}" v-star name="{{$parameter}}" required>
             </div>
         @endforeach
     </div>

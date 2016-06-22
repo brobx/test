@@ -173,6 +173,7 @@ return [
     'carValue' => 'قيمة السيارة',
     'amount' => 'المبلغ',
     'loanAmount' => 'مبلغ القرض',
+    'depositAmount' => 'قيمة الايداع',
     'homeValue' => 'قيمة المنزل',
     'minBalance' => 'الحد الأدني للرصيد',
     'years' => 'سنة',

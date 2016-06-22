@@ -13,7 +13,7 @@ class AddTypeFieldToReviewsTable extends Migration
     public function up()
     {
         Schema::table('reviews', function (Blueprint $table) {
-            $table->enum('type', ['branch', 'phone', 'online_banking', 'atm', 'information'])->nullable();
+            $table->string('type', 255)->nullable();
         });
     }
 

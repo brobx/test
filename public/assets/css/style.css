@@ -2244,13 +2244,14 @@ input[type='radio']:checked:before {
 	padding: 10px;
 	z-index: 10;
 	display: none;
-	width: 290px;
+	width: 500px;
 }
 .blockRatingShow div
 {
 	width: 50%;
 	color: #fff;
 	float: left;
+	text-align: left;
 }
 .carretRate
 {

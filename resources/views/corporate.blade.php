@@ -125,18 +125,21 @@
                 <div class="col-md-6">
                     <div class="corporate-branches box-white">
                         <h2 class="section-title">{{trans('main.branches')}}</h2>
-                        <div id="map"></div>
                         <ul>
-                            {{--@foreach($corporate->branches as $branch)
-                                <a href="#" data-remodal-target="modal">
+                            @foreach($corporate->branches as $branch)
+                                <a href="#">
                                     <li>
                                         <h4>{{ $branch->translate()->name }}</h4>
                                         <p>{{ $branch->translate()->address }}</p>
                                         <p>{{ $branch->phone }}</p>
                                         <p>{{ $branch->working_hours }}</p>
+                                        <span class="hidden branchCoordinates">
+                                            <span class="lat">{{ $branch->latitude}}</span>
+                                            <span class="lng">{{ $branch->longitude}}</span>
+                                        </span>
                                     </li>
                                 </a>
-                            @endforeach--}}
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -152,76 +155,105 @@
 @endsection
 
 @section('scripts')
+<!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
 
-    <script>
-        // This example requires the Places library. Include the libraries=places
-        // parameter when you first load the API. For example:
-        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+<script>
+    $('.corporate-branches ul a').on('click',function(ev){
+        ev.preventDefault();
+        var remodalWind = $('.remodal').remodal();
+        remodalWind.open();
+        var branchPosition = {};
+        branchPosition.lat = parseFloat($(this).find('.lat').text());
+        branchPosition.lng = parseFloat($(this).find('.lng').text());
+        console.log(branchPosition)
+        initMap(branchPosition)
+    })
 
-        getLocationbyIp()
-        function getLocationbyIp() {
-            $.get("http://ipinfo.io", function (response) {
-                console.log(response)
-            }, "jsonp");
-        }
+    function initMap(branchPosition) {
+        //var myLatLng = branchPosition;
 
-        var map;
-        var infowindow;
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 13,
+            center: branchPosition
+        });
 
-        var userPosition = navigator.geolocation.getCurrentPosition(function(position) {
-            console.log(position)
-                var latitude = position.coords.latitude,
-                    longitude = position.coords.longitude,
-                    pyrmont = {lat: latitude, lng: longitude},
-                    objToSearch = '{{ $corporate->translate()->name }}';
-            console.log(objToSearch)
-            initMap(pyrmont, objToSearch)
-        })
-        //console.log(userPosition)
-
-
-        function initMap(pyrmont, objToSearch) {
-            //var pyrmont = {lat: 30.046111, lng: 31.223102};
-
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: pyrmont,
-                zoom: 11
-            });
-
-            infowindow = new google.maps.InfoWindow();
-            var service = new google.maps.places.PlacesService(map);
-            service.nearbySearch({
-                location: pyrmont,
-                radius: 15000,
-                type: ['bank'],
-                name: objToSearch
-            }, callback);
-        }
-
-        function callback(results, status) {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-                for (var i = 0; i < results.length; i++) {
-                    createMarker(results[i]);
-                }
-            }
-        }
-
-        function createMarker(place) {
-            var placeLoc = place.geometry.location;
-            var marker = new google.maps.Marker({
-                map: map,
-                position: place.geometry.location
-            });
-
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.setContent(place.name);
-                infowindow.open(map, this);
-            });
-        }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC96hIBgmfXda-mTT8vL2KMvPBZn2WF0wc&libraries=places" async defer></script>
+        var marker = new google.maps.Marker({
+            position: branchPosition,
+            map: map,
+            title: 'Hello World!'
+        });
+    }
+</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC96hIBgmfXda-mTT8vL2KMvPBZn2WF0wc" async defer></script>
 <script>
     $('.collapse').collapse("hide");
 </script>
 
+<!--<script>
+    // This example requires the Places library. Include the libraries=places
+    // parameter when you first load the API. For example:
+    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+    getLocationbyIp()
+    function getLocationbyIp() {
+        $.get("http://ipinfo.io", function (response) {
+            console.log(response)
+        }, "jsonp");
+    }
+
+    var map;
+    var infowindow;
+
+    var userPosition = navigator.geolocation.getCurrentPosition(function(position) {
+        console.log(position)
+        var latitude = position.coords.latitude,
+                longitude = position.coords.longitude,
+                pyrmont = {lat: latitude, lng: longitude},
+                objToSearch = '{{ $corporate->translate()->name }}';
+        console.log(objToSearch)
+        initMap(pyrmont, objToSearch)
+    })
+    //console.log(userPosition)
+
+
+    function initMap(pyrmont, objToSearch) {
+        //var pyrmont = {lat: 30.046111, lng: 31.223102};
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: pyrmont,
+            zoom: 11
+        });
+
+        infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+            location: pyrmont,
+            radius: 15000,
+            type: ['bank'],
+            name: objToSearch
+        }, callback);
+    }
+
+    function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                createMarker(results[i]);
+            }
+        }
+    }
+
+    function createMarker(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(place.name);
+            infowindow.open(map, this);
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC96hIBgmfXda-mTT8vL2KMvPBZn2WF0wc&libraries=places" async defer></script>-->
 @endsection

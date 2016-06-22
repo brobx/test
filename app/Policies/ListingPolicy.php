@@ -75,7 +75,7 @@ class ListingPolicy
      */
     private function checkTimeWindow(Lead $lead, Listing $listing)
     {
-        $slug = $listing->corporate->type->slug;
+        /*$slug = $listing->corporate->type->slug;
 
         if($slug == 'travel' && Carbon::createFromFormat('d-m-Y' , $listing->getFieldValue('Return Date'))->isFuture()) {
             throw new ListingTimeWindowNotExpired('User Cannot rate this listing just yet.');
@@ -83,7 +83,7 @@ class ListingPolicy
 
         if ($slug == 'banking' && $lead->created_at->addDays($listing->getFieldValue('Average Processing Time'))->isFuture()) {
             throw new ListingTimeWindowNotExpired('User Cannot rate this listing just yet.');
-        }
+        }*/
 
         return true;
     }

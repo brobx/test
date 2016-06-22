@@ -97,11 +97,28 @@
         </div>
     </div>
     <div class="col-md-3">
+        <?php
+        $tempRews = $reviews[$listing->id];
+        $average = 0;
+        $count = 0;
+        $tempRatings =[];
+        foreach ($tempRews as $rew) {
+            foreach ($rew as $item) {
+                $tempRatings[str_replace('_', ' ', $item->type)] = $item->sum_rating;
+                $average += (int)$item->sum_rating;
+                $count++;
+            }
+        }
+        if ($average) {
+            $average = $average / $count;
+        }
+        ?>
+
         <div class="listing-rating">
-            @for($i = 0; $i < $listing->averageRating; $i++)
+            @for($i = 0; $i < $average; $i++)
                 <i class="fa fa-star fa-2x"></i>
             @endfor
-            @for($i = 0; $i < 5 - $listing->averageRating; $i++)
+            @for($i = 0; $i < 5 - $average; $i++)
                 <i class="fa fa-star-o fa-2x"></i>
             @endfor
                 <div class="blockRatingShow">
