@@ -13,7 +13,8 @@ class Review extends Model
         'user_id',
         'lead_id',
         'listing_id',
-        'rating'
+        'rating',
+        'type'
     ];
 
     /**
@@ -30,5 +31,18 @@ class Review extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @param int $listingId
+     * @return array
+     */
+    public function getReviewByListingId($listingId)
+    {
+        return \DB::table('reviews')
+            ->where('listing_id', '=', $listingId)
+            ->select(\DB::raw('SUM(rating)/COUNT(listing_id) as sum_rating'), 'type')
+            ->groupBy('type')
+            ->get();
     }
 }

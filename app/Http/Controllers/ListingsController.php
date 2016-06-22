@@ -150,7 +150,7 @@ class ListingsController extends Controller
                       ->where('listing_id', $listing->id)
                       ->first();
 
-        $listing->review($lead, collect($request->get('parameters'))->avg());
+        $listing->review($lead, collect($request->get('parameters'))->all());
 
         return redirect()->route('account.index')
                          ->with('success', 'Thanks for your review');
